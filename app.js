@@ -20,3 +20,15 @@ function displayDogImage(imageUrl) {
     dogImagesContainer.appendChild(img);
 }
 
+// Function to handle breed selection
+async function handleBreedSelection() {
+    const selectedBreed = breedDropdown.value;
+    try {
+        // Fetch the image URL for the selected breed
+        const imageUrl = await searchDogByBreed(selectedBreed);
+        // Display the image on the page
+        displayDogImage(imageUrl);
+    } catch (error) {
+        console.error('Error handling breed selection:', error);
+    }
+}

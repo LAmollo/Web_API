@@ -10,9 +10,24 @@ export async function searchDogByBreed(breed) {
         }
         const data = await response.json();
         return data.message;
-        
+
     } catch (error) {
         console.error('Error fetching dog image by breed:', error);
+        throw error;
+    }
+}
+
+// Function to get list of dog breeds
+export async function getDogBreeds() {
+    try {
+        const response = await fetch(`${DOG_API_BASE_URL}/breeds/list/all`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch dog breeds');
+        }
+        const data = await response.json();
+        return Object.keys(data.message);
+    } catch (error) {
+        console.error('Error fetching dog breeds:', error);
         throw error;
     }
 }
