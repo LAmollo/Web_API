@@ -32,3 +32,24 @@ async function handleBreedSelection() {
         console.error('Error handling breed selection:', error);
     }
 }
+
+// Initialize the breed dropdown menu
+async function initializeBreedDropdown() {
+    try {
+        // Fetch the list of dog breeds
+        const breeds = await getDogBreeds();
+        // Populate the breed dropdown menu with breed options
+        breeds.forEach(breed => {
+            const option = document.createElement('option');
+            option.value = breed;
+            option.textContent = breed;
+            breedDropdown.appendChild(option);
+        });
+    } catch (error) {
+        console.error('Error initializing breed dropdown:', error);
+    }
+}
+
+// Call the initializeBreedDropdown function to initialize the dropdown menu
+initializeBreedDropdown();
+
