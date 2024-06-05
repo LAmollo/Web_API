@@ -1,9 +1,19 @@
-// Import necessary functions from api.js module
-import { searchDogByBreed, getDogBreeds } from './api.js';
+// API endpoint URLs
+const DOG_API_BASE_URL = 'https://dog.ceo/api';
 
-// Get references to HTML elements
-const breedDropdown = document.getElementById('breed-dropdown');
-const dogImagesContainer = document.querySelector('.dog-images');
+// Function to search dog images by breed
+export async function searchDogByBreed(breed) {
+    try {
+        const response = await fetch(`${DOG_API_BASE_URL}/breed/${breed}/images/random`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch dog image by breed');
+        }
+        const data = await response.json();
+        return data.message;
+        
+    } catch (error) {
+        console.error('Error fetching dog image by breed:', error);
+        throw error;
+    }
+}
 
-// Add event listener to the breed dropdown menu
-breedDropdown.addEventListener('change', handleBreedSelection);
