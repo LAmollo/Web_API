@@ -37,4 +37,31 @@ body {
     margin-bottom: 20px;
   }
   
-    
+  dog-image {
+    max-width: 100%; /* Ensure images don't exceed container width */
+    max-height: 100%; /* Ensure images don't exceed container height */
+    border-radius: 10px; /* Add border radius */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+  }
+  
+  .dropdown {
+    margin-bottom: 20px;
+  }
+
+  dropdown select {
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+  }
+  
+  /* Responsive styles */
+  @media only screen and (max-width: 600px) {
+    .dog-images {
+        height: 300px; /* Adjust the container height for smaller screens */
+    }
+  
+    .dog-image {
+        border-radius: 5px; /* Reduce border radius for smaller screens */
+    }
+  }
+  
