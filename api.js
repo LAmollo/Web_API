@@ -32,3 +32,23 @@ export async function getDogBreeds() {
     }
 }
 
+// Function to get breed information
+export async function getBreedInfo(breed) {
+    try {
+        const response = await fetch(`${DOG_API_BASE_URL}/breeds/search?q=${breed}`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch breed information');
+        }
+        const data = await response.json();
+        if (data.length > 0) {
+            return data[0].description || 'No information available';
+        } else {
+            return 'No information available';
+        }
+    } catch (error) {
+        console.error('Error fetching breed information:', error);
+        throw error;
+    }
+}
+
+
